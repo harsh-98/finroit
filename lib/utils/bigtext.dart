@@ -6,7 +6,7 @@ Widget bigText(String text, Color color) {
     style: TextStyle(
       fontSize: 40,
       color: color,
-      fontWeight: FontWeight.bold,
+      // fontWeight: FontWeight.bold,
     ),
   );
 }

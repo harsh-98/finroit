@@ -9,9 +9,10 @@ class UserState {
   UserState({required this.userName, required this.userEmail, balance});
 }
 class AppState {
-  final List<Market> markets;
+  final Map<String, List<Market>> markets;
   final UserState userState ;
   final extendedBaseUrl = 'https://api.extended.exchange';
+  final category = 'L1' ;
 
   AppState({required this.markets, required this.userState});
 
@@ -22,7 +23,7 @@ class Error {
   Error(this.message);
 }
 class GetMarketsAction {
-  final List<Market> markets;
+  final Map<String, List<Market>> markets;
   GetMarketsAction({required this.markets});
 }
 

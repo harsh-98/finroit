@@ -15,10 +15,11 @@ ThunkAction<AppState> fetchData = (Store<AppState> store) async {
     if (response.statusCode == 200) {
       // Parse the response data
       final dynamic data = jsonDecode(response.body);
-      final List<Market> markets = [];
+      final Map<String, List<Market>> markets = {};
       for (var item in data['data'] as List<dynamic>) {
         final market = Market.fromJson(item as Map<String, dynamic>);
-        markets.add(market);
+        markets[market.category] = (markets[market.category] ?? []);
+        markets[market.category]?.add(market);
         // Here you would typically dispatch an action to update the state with the new card
         // store.dispatch(GetTradeCardAction(cards: [card]));
       }

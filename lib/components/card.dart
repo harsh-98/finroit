@@ -20,21 +20,27 @@ class TradeCard extends StatefulWidget {
 class _CardState extends State<TradeCard> {
   double amountToTrade = 0;
   double minAmount = 0;
-  late TextEditingController
-  amountController; // = (text: amountToTrade.toStringAsFixed(3))
+  TextEditingController amountController = TextEditingController(text:'0'); // = (text: amountToTrade.toStringAsFixed(3))
 
   @override
   void initState() {
     super.initState();
     setState(() {
+      amountController.text = widget.details.getAssetAmount(10).toStringAsFixed(widget.details.assetPrecision);
       minAmount = widget.details.getAssetAmount(10);
       amountToTrade = minAmount;
-      amountController = TextEditingController(
-        text: amountToTrade.toStringAsFixed(4),
-      );
+      // amountController = TextEditingController(
+      //   text: amountToTrade.toStringAsFixed(4),
+      // );
       final x = widget.details.getAssetAmount(1000);
       log("Min Amount: $minAmount $x ");
     });
+  }
+
+  @override
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
   }
 
   @override
@@ -61,7 +67,7 @@ class _CardState extends State<TradeCard> {
                       FilteringTextInputFormatter.allow(
                         RegExp(r'^\d+\.?\d{0,3}'),
                       ),
-                      // FilteringTextInputFormatter.digitsOnly,
+                      // FilteringTetInputFormatter.digitsOnly,
                     ],
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -70,7 +76,7 @@ class _CardState extends State<TradeCard> {
                       border: OutlineInputBorder(),
                       hintText: '0',
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 10,
+                        horizontal: 40,
                         vertical: 5,
                       ),
                     ),
@@ -87,10 +93,13 @@ class _CardState extends State<TradeCard> {
                   value: amountToTrade,
                   min: minAmount,
                   divisions: null,
-                  label: '',
+                  // label: '${amountToTrade.toStringAsFixed(4)}',
                   onChanged: (value) {
                     setState(() {
                       amountToTrade = value;
+                      amountController.text = amountToTrade.toStringAsFixed(widget.details.assetPrecision);
+                      log(amountToTrade.toString());
+                      print(amountController.text);
                     });
                   },
                 ),
@@ -123,7 +132,7 @@ Widget buildTradeCardColumn(BuildContext context, double price, String action) {
       // Expanded(
       //   child:
       // ),
-      Text("${price.toStringAsFixed(4)}\$"),
+      Text("${price}\$"),
       // Container(
       //   height: 20,
       //   // flex: 2,
@@ -144,7 +153,7 @@ Widget buildTradeCardColumn(BuildContext context, double price, String action) {
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all<Color>(
             action == 'Buy'
-                ? Theme.of(context).colorScheme.secondaryFixed
+                ? Theme.of(context).colorScheme.surface
                 : Theme.of(context).colorScheme.error,
           ),
         ),

@@ -75,7 +75,7 @@ class _AppState extends State<HomePage> with SingleTickerProviderStateMixin {
     // });
     // appState.start = false;
     return Scaffold(
-      backgroundColor: Colors.deepPurple[0],
+      // backgroundColor: Colors.deepPurple[0],
       body:
           // Center(
           Container(

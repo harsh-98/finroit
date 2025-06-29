@@ -16,10 +16,10 @@ class CardDeck extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Store<AppState>>(
       converter: (store) => store,
-      onInitialBuild: (store )=>store.dispatch(fetchData),
+      // onInitialBuild: (store )=>store.dispatch(fetchData),
       builder:(context, store) => ListView(
         scrollDirection: Axis.vertical,
-        children: store.state.markets.map((market) {
+        children: (store.state.markets[store.state.category] ?? []).where((obj) => obj.active).map((market) {
           return TradeCard(details: market);
         }).toList(),
       ),

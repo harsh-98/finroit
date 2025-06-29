@@ -4,6 +4,7 @@ class Market {
   String assetName;
   int assetPrecision;
   bool active;
+  String category;
   // marketStats
   double lastPrice;
   double bidPrice;
@@ -22,6 +23,7 @@ class Market {
     required this.assetName,
     required this.assetPrecision,
     required this.active,
+    required this.category,
     // marketStats
     required this.lastPrice,
     required this.bidPrice,
@@ -53,6 +55,7 @@ class Market {
       assetName: item['assetName'] as String,
       assetPrecision: item['assetPrecision'] as int,
       active: item['active'] as bool,
+      category: item['category'] as String,
       //
       lastPrice: double.parse(marketStats['lastPrice']) ,
       bidPrice: double.parse(marketStats['bidPrice']),
@@ -72,6 +75,7 @@ class Market {
 
   static Market dummy() {
     return Market(
+      category: 'L1',
       assetName: 'BTC',
       assetPrecision: 4,
       active: true,
