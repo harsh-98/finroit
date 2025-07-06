@@ -1,4 +1,58 @@
 import 'dart:math';
+import 'package:namer_app/redux/const.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+part 'market.g.dart';
+
+
+class Markets {
+  final Map<String, List<Market>> markets;
+
+  Markets({required this.markets});
+
+  List<Market> getMarketsByCategory(String category) {
+    return markets[category] ?? [];
+  }
+
+  List<String> getCategories() {
+    return markets.keys.toList();
+  }
+}
+@riverpod
+Future<Markets> markets(MarketsRef ref) async {
+  if (true ) {
+    // This is a placeholder for the market data.
+    // In a real application, you would fetch this data from an API or database.
+    return Markets(markets: Map<String, List<Market>>.from({'L1': [
+      Market.dummy(),
+      Market.dummy(),
+      Market.dummy(),
+    ]}));
+  }
+  // This is a placeholder for the market data.
+  // In a real application, you would fetch this data from an API or database.
+    final response = await http.get(
+      Uri.parse('${ref.read(constantsProvider )}/api/v1/info/markets'),
+    );
+    if (response.statusCode == 200) {
+      // Parse the response data
+      final dynamic data = jsonDecode(response.body);
+      final Map<String, List<Market>> markets = {};
+      for (var item in data['data'] as List<dynamic>) {
+        final market = Market.fromJson(item as Map<String, dynamic>);
+        markets[market.category] = (markets[market.category] ?? []);
+        markets[market.category]?.add(market);
+        // Here you would typically dispatch an action to update the state with the new card
+        // store.dispatch(GetTradeCardAction(cards: [card]));
+      }
+       return Markets(markets: markets);
+    } else {
+      throw Exception('Failed to load markets: ${response.statusCode}');
+    }
+}
+
 
 class Market {
   String assetName;

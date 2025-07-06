@@ -12,10 +12,7 @@ class TradeAsset extends StatefulWidget {
 class TradeAssetState extends State<TradeAsset>  {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: NavBar(),
-      
-      body: Center(
+    return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -30,8 +27,7 @@ class TradeAssetState extends State<TradeAsset>  {
               child: const Text('Trade Now'),
             ),
           ],
-        ),
-      ),
-    );
+        )
+        );
   }
 }

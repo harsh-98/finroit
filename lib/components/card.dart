@@ -2,31 +2,35 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:namer_app/redux/user.dart';
 import '../utils/bigtext.dart';
 import 'dart:developer';
-import '../redux/state.dart';
 import '../redux/market.dart';
 
-class TradeCard extends StatefulWidget {
+class TradeCard extends ConsumerStatefulWidget {
   final Market details;
   // var current = WordPair.random();
   const TradeCard({super.key, required this.details});
   @override
-  State<TradeCard> createState() => _CardState();
+  ConsumerState<TradeCard> createState() => _CardState();
 }
 
 // This card will have a container and will have three rows: - The title of the asset - A slider - Two columns. In each column, there will be a small text field where it will show the current price. Under it, there will be an elevated button which will show 'Buy' on the left-hand column and 'Sell' on the right-hand column.
-class _CardState extends State<TradeCard> {
+class _CardState extends ConsumerState<TradeCard> {
   double amountToTrade = 0;
   double minAmount = 0;
-  TextEditingController amountController = TextEditingController(text:'0'); // = (text: amountToTrade.toStringAsFixed(3))
+  TextEditingController amountController = TextEditingController(
+    text: '0',
+  ); // = (text: amountToTrade.toStringAsFixed(3))
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      amountController.text = widget.details.getAssetAmount(10).toStringAsFixed(widget.details.assetPrecision);
+      amountController.text = widget.details
+          .getAssetAmount(10)
+          .toStringAsFixed(widget.details.assetPrecision);
       minAmount = widget.details.getAssetAmount(10);
       amountToTrade = minAmount;
       // amountController = TextEditingController(
@@ -84,23 +88,27 @@ class _CardState extends State<TradeCard> {
                   ),
                   padding: const EdgeInsets.all(10),
                 ),
-                Slider(
-                  // value: minAmount,
-                  // min: minAmount,
-                  max: widget.details.getAssetAmount(
-                    StoreProvider.of<AppState>(context).state.userState.balance,
-                  ),
-                  value: amountToTrade,
-                  min: minAmount,
-                  divisions: null,
-                  // label: '${amountToTrade.toStringAsFixed(4)}',
-                  onChanged: (value) {
-                    setState(() {
-                      amountToTrade = value;
-                      amountController.text = amountToTrade.toStringAsFixed(widget.details.assetPrecision);
-                      log(amountToTrade.toString());
-                      print(amountController.text);
-                    });
+                Consumer(
+                  builder: (context, ref, child) {
+                    return Slider(
+                      max: widget.details.getAssetAmount(
+                        ref.watch(userStateProvider).balance,
+                      ),
+                      value: amountToTrade,
+                      min: minAmount,
+                      divisions: null,
+                      // label: '${amountToTrade.toStringAsFixed(4)}',
+                      onChanged: (value) {
+                        setState(() {
+                          amountToTrade = value;
+                          amountController.text = amountToTrade.toStringAsFixed(
+                            widget.details.assetPrecision,
+                          );
+                          log(amountToTrade.toString());
+                          print(amountController.text);
+                        });
+                      },
+                    );
                   },
                 ),
               ],
