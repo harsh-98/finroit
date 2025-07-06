@@ -1,16 +1,18 @@
-import 'dart:math';
 import 'package:namer_app/redux/const.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'dart:math';
+import 'dart:developer' as dev;
 part 'market.g.dart';
 
-
-class Markets {
+@riverpod
+class Markets extends _$Markets {
   final Map<String, List<Market>> markets;
+  late final List<String> categories ;
 
-  Markets({required this.markets});
+  Markets({this.markets = const {}, categories = const []});
 
   List<Market> getMarketsByCategory(String category) {
     return markets[category] ?? [];
@@ -19,22 +21,27 @@ class Markets {
   List<String> getCategories() {
     return markets.keys.toList();
   }
-}
-@riverpod
-Future<Markets> markets(MarketsRef ref) async {
-  if (true ) {
+  @override
+  Markets build() => Markets();
+  update() async {
+    dev.log('Updating market state');
+    final newMarkets = await fetchMarket();
+    state = newMarkets;
+  }
+  Future<Markets> fetchMarket() async {
+    if (true) {
+      // This is a placeholder for the market data.
+      // In a real application, you would fetch this data from an API or database.
+      // return Markets(markets: Map<String, List<Market>>.from({'L1': [
+      //   Market.dummy(),
+      //   Market.dummy(),
+      //   Market.dummy(),
+      // ]}));
+    }
     // This is a placeholder for the market data.
     // In a real application, you would fetch this data from an API or database.
-    return Markets(markets: Map<String, List<Market>>.from({'L1': [
-      Market.dummy(),
-      Market.dummy(),
-      Market.dummy(),
-    ]}));
-  }
-  // This is a placeholder for the market data.
-  // In a real application, you would fetch this data from an API or database.
     final response = await http.get(
-      Uri.parse('${ref.read(constantsProvider )}/api/v1/info/markets'),
+      Uri.parse('${Constants.extendedApiBaseUrl}/api/v1/info/markets'),
     );
     if (response.statusCode == 200) {
       // Parse the response data
@@ -47,12 +54,14 @@ Future<Markets> markets(MarketsRef ref) async {
         // Here you would typically dispatch an action to update the state with the new card
         // store.dispatch(GetTradeCardAction(cards: [card]));
       }
-       return Markets(markets: markets);
+      var keys = markets.keys.toList();
+      keys.sort((a, b) => (markets[a]?.length ?? 0).compareTo(markets[b]?.length ?? 0));
+      return Markets(markets: markets, categories: keys);
     } else {
       throw Exception('Failed to load markets: ${response.statusCode}');
     }
+  }
 }
-
 
 class Market {
   String assetName;
@@ -111,12 +120,14 @@ class Market {
       active: item['active'] as bool,
       category: item['category'] as String,
       //
-      lastPrice: double.parse(marketStats['lastPrice']) ,
+      lastPrice: double.parse(marketStats['lastPrice']),
       bidPrice: double.parse(marketStats['bidPrice']),
       askPrice: double.parse(marketStats['askPrice']),
       dailyVolume: double.parse(marketStats['dailyVolume']),
       dailyPriceChange: double.parse(marketStats['dailyPriceChange']),
-      dailyPriceChangePercentage: double.parse(marketStats['dailyPriceChangePercentage']),
+      dailyPriceChangePercentage: double.parse(
+        marketStats['dailyPriceChangePercentage'],
+      ),
       //
       minOrderSize: double.parse(tradingConfig['minOrderSize']),
       minOrderSizeChange: double.parse(tradingConfig['minOrderSizeChange']),

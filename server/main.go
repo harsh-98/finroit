@@ -25,8 +25,8 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 		UserEmail: "john.doe@example.com",
 		Balance:   1234.56,
 		XP:        500,
-		Category:  "Pro",
-		Level:     "Intermediate",
+		Category:  "L1",
+		Level:     "Lv1",
 	}
 
 	// Set response headers
@@ -40,7 +40,7 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	port := os.Getenv("PORT") // Set environment variable
-	http.HandleFunc("/api/info", infoHandler)
+	http.HandleFunc("/user/info", infoHandler)
 
 	log.Println("Server running on", port)
 	log.Fatal(http.ListenAndServe(port, nil))

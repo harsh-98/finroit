@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namer_app/components/header.dart';
 import 'package:namer_app/redux/user.dart';
 import '../redux/market.dart';
 import 'nav_bar.dart';
 
-class TradingScaffold extends StatefulWidget {
+class TradingScaffold extends ConsumerStatefulWidget {
   const TradingScaffold({super.key});
 
   @override
-  State<TradingScaffold> createState() => _TradingScaffoldState();
+  ConsumerState<TradingScaffold> createState() => _TradingScaffoldState();
 }
 
-class _TradingScaffoldState extends State<TradingScaffold> {
+class _TradingScaffoldState extends ConsumerState<TradingScaffold> {
   PageController _pageController = PageController();
   int _selectedTabIndex = 0;
   int _currentCardIndex = 2; // Tesla card is in focus (index 2)
@@ -96,6 +97,12 @@ class _TradingScaffoldState extends State<TradingScaffold> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    ref.read(userStateProvider.notifier).update();
+    ref.read(marketsProvider.notifier).update();
+  }
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -106,7 +113,7 @@ class _TradingScaffoldState extends State<TradingScaffold> {
     return SafeArea(
         child: Column(
           children: [
-            Header(userState: UserState.dummy()),
+            Header(userState: ref.watch(userStateProvider)),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

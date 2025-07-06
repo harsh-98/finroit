@@ -9,11 +9,11 @@ class CardDeck extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final store = ref.watch(marketsProvider);
-    return store.when(
-      data: (markets) => getcards(markets.getMarketsByCategory('L1')),
-      loading: () => CircularProgressIndicator(),
-      error: (error, stack) => Text('Error: $error'),
-    );
+    return getcards(store.getMarketsByCategory('L1'));
+    //   data: (markets) => getcards(markets.getMarketsByCategory('L1')),
+    //   loading: () => CircularProgressIndicator(),
+    //   error: (error, stack) => Text('Error: $error'),
+    // );
   }
 }
 

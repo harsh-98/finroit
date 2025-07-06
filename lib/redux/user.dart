@@ -1,11 +1,10 @@
-import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:namer_app/redux/const.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'dart:developer';
 part 'user.g.dart';
 
 @riverpod
@@ -16,22 +15,13 @@ class UserState extends _$UserState {
   int XP ;
   String category;
   String level;
-  UserState({required this.name, 
-  required this.userEmail, 
-  required this.balance,
-  required this.XP,
-  required this.level ,
+  UserState({ this.name= 'John Doe', 
+   this.userEmail = 'ad@gmail.com',
+   this.balance = 1000.0,
+   this.XP =0,
+   this.level = 'LV0',
   this.category = 'L1'});
 
-  static dummy() {
-    return UserState(
-      name: 'John Doe',
-      userEmail: 'ad@gmail.com',
-      balance: 1000.0,
-      XP: 0,
-      level: 'LV8',
-    );
-  }
 
   static fromJson(Map<String, dynamic> json) {
     return UserState(
@@ -45,18 +35,16 @@ class UserState extends _$UserState {
   }
 
   @override
-  UserState build()  => UserState.dummy();
+  UserState build()  => UserState();
 
-  Future<void > update(ref) async {
-    // UserState x = await ref.read(fetchUserDataProvider);
-    // state = UserState.dummy();
+  update() async {
+    log('Updating user state');
+    UserState x =  await fetchUserData(Constants.backendApiUrl);
+    state = x;
   }
-}
-
-@riverpod
-Future<UserState> fetchUserData(FetchUserDataRef ref) async {
+Future<UserState> fetchUserData(String baseUrl) async {
  final response = await http.get(
-      Uri.parse('${ref.read(constantsProvider )}/user/info'),
+      Uri.parse('${baseUrl}/user/info'),
     );
     if (response.statusCode == 200) {
       // Parse the response data
@@ -66,4 +54,5 @@ Future<UserState> fetchUserData(FetchUserDataRef ref) async {
     } else {
       throw Exception('Failed to load user: ${response.statusCode}');
     }
+}
 }
