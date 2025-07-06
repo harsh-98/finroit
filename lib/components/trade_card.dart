@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namer_app/components/trade.dart';
 import 'package:namer_app/util.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../utils/bigtext.dart';
 import 'painter.dart';
 import '../redux/market.dart';
@@ -88,25 +89,22 @@ import '../redux/market.dart';
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: market.color.withOpacity(0.2),
+                      // color: market.color.withOpacity(0.2),
                     ),
-                    child: Center(
-                      child: Text(
-                        market.symbol,
-                        style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: market.color,
-                        ),
-                      ),
-                    ),
+                    child: SvgPicture.network(market.imageUrl(), fit: BoxFit.cover),
+                        // market.symbol,
+                        // style: GoogleFonts.poppins(
+                        //   fontSize: 18,
+                        //   fontWeight: FontWeight.w700,
+                        //   color: market.color,
+                        // ),
                   ),
                   Spacer(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '\$${market.bidPrice.toStringAsFixed(market.assetPrecision)}',
+                        '\$${market.bidPrice.toString()}',
                         style: GoogleFonts.poppins(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,

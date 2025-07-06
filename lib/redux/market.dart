@@ -8,17 +8,11 @@ import 'dart:math';
 import 'dart:developer' as dev;
 part 'market.g.dart';
 
-void combine(
-  Map<String, List<Market>> markets,
-  Map<String, (String, String, Color)> names,
-) {
+void combine(Map<String, List<Market>> markets, Map<String, String> names) {
   for (var category in markets.keys) {
     for (var market in markets[category] ?? List<Market>.from([])) {
       if (names.containsKey(market.code)) {
-        final details = names[market.code]!;
-        market.fullName = details.$1;
-        market.symbol = details.$2;
-        market.color = details.$3;
+        market.fullName = names[market.code] ?? 'Nan';
       }
     }
   }
@@ -42,18 +36,22 @@ class Markets extends _$Markets {
   @override
   Markets build() {
     Map<String, List<Market>> markets = {
-      'L1': [Market.dummy(), Market.dummy(), Market.dummy()],
+      'L1': [Market.dummy(asset: 'KAITO'), Market.dummy(), Market.dummy()],
       'L2': [
-        Market.dummy(asset: 'WETH'),
-        Market.dummy(asset: 'WETH'),
-        Market.dummy(asset: 'WETH'),
+        Market.dummy(asset: 'ETH'),
+        // Market.dummy(asset: 'SONIC'),
+        Market.dummy(asset: 'KAITO'),
+        Market.dummy(asset: 'BNB'),
+        Market.dummy(asset: 'XAU'),
       ],
     };
     combine(markets, {
-      'BTC': ('Bitcoin', '₿', Color(0xFFF97316)),
-      'ETH': ('Ethereum', 'Ξ', Color(0xFF3B82F6)),
-      'WETH': ('Ethereum', 'Ξ', Color(0xFF3B82F6)),
-      'BNB': ('Binance Coin', 'BNB', Color(0xffF0B90B)),
+      'BTC': 'Bitcoin',
+      'ETH': 'Ethereum',
+      'BNB': 'Binance Coin',
+      'XAU': 'Gold',
+      'SONIC': 'Sonic',
+      'KAITO': 'kaito',
     });
     return Markets(markets: markets, categories: ['L1', 'L2']);
   }
@@ -94,20 +92,16 @@ class Markets extends _$Markets {
   }
 }
 
-Future<Map<String, (String, String, Color)>> fetchextraDetails() async {
+Future<Map<String, String>> fetchextraDetails() async {
   final response = await http.get(
-    Uri.parse('${Constants.backendApiUrl}/market/symbols'),
+    Uri.parse('${Constants.backendApiUrl}/market/extra'),
   );
   if (response.statusCode == 200) {
     final dynamic data = jsonDecode(response.body);
-    final Map<String, (String, String, Color)> names = {};
-    for (var item in data['data'] as List<dynamic>) {
-      final symbol = item['symbol'] as String;
-      final name = item['name'] as String;
-      final icon = item['icon'] as String;
-      final color = item['color'] as int;
-      names[symbol] = (name, icon, Color(color));
-    }
+    final Map<String, String> names = {};
+    (data as Map<String, dynamic>).forEach((sym, value) {
+      names[sym] = (value as Map<String, dynamic>)['name'] as String;
+    });
     return names;
   } else {
     throw Exception('Failed to load markets: ${response.statusCode}');
@@ -135,8 +129,8 @@ class Market {
   double maxLeverage;
   double minPriceChange;
 
-  Color color;
-  String symbol;
+  // Color color;
+  // String symbol;
   String fullName;
 
   String notion(double x) {
@@ -176,8 +170,8 @@ class Market {
     required this.maxLeverage,
     required this.minPriceChange,
 
-    this.color = const Color(0xFfFFFFFF),
-    this.symbol = '',
+    // this.color = const Color(0xFfFFFFFF),
+    // this.symbol = '',
     this.fullName = '',
   });
 
@@ -218,7 +212,10 @@ class Market {
     );
     return card;
   }
-
+  String imageUrl() {
+    dev.log('https://cdn.extended.exchange/crypto/${this.code}.svg');
+    return 'https://cdn.extended.exchange/crypto/${this.code}.svg';
+  }
   static Market dummy({String asset = 'BTC'}) {
     return Market(
       category: 'L1',

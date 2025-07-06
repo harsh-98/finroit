@@ -64,7 +64,7 @@ func getMarketData() ([]byte, error) {
 	if err == nil {
 		marketdata = data
 	}
-	return nil, err
+	return marketdata, err
 }
 func marketHandler(w http.ResponseWriter, r *http.Request) {
 	data, err := getMarketData()
