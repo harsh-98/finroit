@@ -28,7 +28,7 @@ Widget button(String text, List<Color> gradientColors, Color shadowColor) {
           ),
         ],
       ),
-      child: Center(child: Text(text, style: textstyle.mid)),
+      child: Center(child: Text(text, style: textstyle.midWhite)),
     ),
   );
 }

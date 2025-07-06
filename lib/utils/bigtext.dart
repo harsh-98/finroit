@@ -15,16 +15,18 @@ Widget bigText(String text, Color color) {
 class _style {
   late TextStyle bigger;
   late TextStyle big;
-  late TextStyle mid;
-  late TextStyle midLessWhite;
-  late TextStyle small;
+  late TextStyle midWhite;
+  late TextStyle midLess;
+  late TextStyle smallWhite;
+  late TextStyle smallLess;
   late TextStyle smaller;
   _style({
     required this.bigger,
     required this.big,
-    required this.mid,
-    required this.midLessWhite,
-    required this.small,
+    required this.midWhite,
+    required this.midLess,
+    required this.smallWhite,
+    required this.smallLess,
     required this.smaller,
   });
 }
@@ -40,20 +42,25 @@ _style textstyle = _style(
     fontWeight: FontWeight.w700,
     color: Colors.white,
   ),
-  mid: GoogleFonts.poppins(
+  midWhite: GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w700,
     color: Colors.white,
   ),
-  midLessWhite: GoogleFonts.poppins(
+  midLess: GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: Color(0xFF9CA3AF),
   ),
-  small: GoogleFonts.poppins(
+  smallLess: GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     color: Color(0xFF9CA3AF),
+  ),
+  smallWhite: GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
   ),
   smaller: GoogleFonts.poppins(
     fontSize: 10,

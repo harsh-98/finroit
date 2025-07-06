@@ -64,7 +64,7 @@ class _TradingScaffoldState extends ConsumerState<TradingScaffold> {
           SizedBox(height: 8),
           Text(
             'Swipe to explore different assets',
-            style: textstyle.midLessWhite,
+            style: textstyle.midLess,
           ),
         ],
       ),

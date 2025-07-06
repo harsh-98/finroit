@@ -26,7 +26,7 @@ class Header extends StatelessWidget {
             child: Center(
               child: Text(
                 userState.level,
-                style: textstyle.mid,
+                style: textstyle.midWhite,
               ),
             ),
           ),
@@ -37,11 +37,11 @@ class Header extends StatelessWidget {
             children: [
               Text(
                 userState.name,
-                style: textstyle.mid,
+                style: textstyle.midWhite,
               ),
               Text(
                 '${userState.XP} XP',
-                style: textstyle.small,
+                style: textstyle.smallLess,
               ),
             ],
           ),

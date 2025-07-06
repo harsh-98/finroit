@@ -34,7 +34,7 @@ class CategoryTab extends StatelessWidget {
                     ),
                     child: Center(child:Text(
                       markets.categories[index],
-                      style: textstyle.mid,
+                      style: textstyle.midWhite,
                     )),
                   ),
                 ),

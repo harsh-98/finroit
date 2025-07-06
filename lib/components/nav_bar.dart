@@ -2,9 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:namer_app/redux/nav_bar_index.dart';
-import 'package:namer_app/redux/user.dart';
 
 class NavBar extends ConsumerWidget {
   NavBar({super.key });
@@ -27,7 +25,7 @@ class NavBar extends ConsumerWidget {
           ),
           BottomNavigationBarItem(
             icon: _buildNavItem(Icon(Icons.group), currentIndex == 1),
-            label: 'Clan',
+            label: 'Groups',
           ),
           BottomNavigationBarItem(
             icon: _buildNavItem(Icon(Icons.person_outline), currentIndex == 2),

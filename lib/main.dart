@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:namer_app/components/card_deck.dart';
 import 'package:namer_app/components/nav_bar.dart';
 import 'package:namer_app/routes/home_page.dart';
+import 'package:namer_app/routes/leaderboard_page.dart';
 import 'package:riverpod/riverpod.dart';
 // import 'package:flutter/rendering.dart';
 import 'dart:developer';
@@ -23,8 +24,8 @@ void main() {
   //   initialState: AppState(
   //     markets: Map<String, List<Market>>.from({
   //       'L1': [
-  //         Market.dummy(), 
-  //         Market.dummy(), 
+  //         Market.dummy(),
+  //         Market.dummy(),
   //         Market.dummy(),
   //         ],
   //     }),
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const Banner.Banner(),
           // '/trade': (context) => const TradeAsset(),
           '/home': (context) => HomePage(), // Placeholder for user page
+          '/leaderboard': (context) => const LeaderboardPage(),
           // '/clan': (context) => const Scaffold(
           //   bottomNavigationBar: NavBar(),
           //   body: Center(child: CardDeck()),

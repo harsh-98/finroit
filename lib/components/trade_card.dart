@@ -42,7 +42,7 @@ import '../redux/market.dart';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(value, style: textstyle.mid),
+        Text(value, style: textstyle.midWhite),
         SizedBox(height: 4),
         Text(label, style: textstyle.smaller),
       ],
@@ -124,7 +124,7 @@ import '../redux/market.dart';
               ),
               Text(
                 market.code,
-                style: textstyle.midLessWhite,
+                style: textstyle.midLess,
               ),
               SizedBox(height: 20),
               _buildChart([25, 40, 30, 55, 45, 60, 50, 70, 60, 75], market.dailyPriceChangePercentage > 0),
