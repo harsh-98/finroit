@@ -47,11 +47,23 @@ class Header extends StatelessWidget {
           ),
           Spacer(),
           // Action buttons
-          // _buildActionButton(Icons.shopping_cart_outlined),
-          // SizedBox(width: 12),
-          // _buildActionButton(Icons.hamburger_outlined),
+          _buildActionButton(Icons.shopping_cart_outlined),
+          SizedBox(width: 12),
+          _buildActionButton(Icons.notifications_outlined),
         ],
       ),
     );
   }
 }
+
+  Widget _buildActionButton(IconData icon) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color(0xFF1F2937),
+      ),
+      child: Icon(icon, color: Colors.white, size: 20),
+    );
+  }

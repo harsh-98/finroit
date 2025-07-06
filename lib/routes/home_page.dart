@@ -4,7 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namer_app/components/trading_scaffold.dart';
+import 'package:namer_app/routes/trading_scaffold.dart';
 import 'package:namer_app/redux/nav_bar_index.dart';
 import 'package:namer_app/routes/trade_asset.dart';
 import '../components/nav_bar.dart';

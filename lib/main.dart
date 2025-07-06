@@ -13,7 +13,7 @@ import 'routes/trade_asset.dart';
 import 'redux/market.dart';
 import 'util.dart';
 import 'theme.dart';
-import 'components/trading_scaffold.dart';
+import 'routes/trading_scaffold.dart';
 import 'routes/banner.dart' as Banner;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

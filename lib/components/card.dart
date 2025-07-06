@@ -58,7 +58,7 @@ class _CardState extends ConsumerState<TradeCard> {
           children: [
             Center(
               child: bigText(
-                widget.details.assetName,
+                widget.details.code,
                 Theme.of(context).colorScheme.shadow,
               ),
             ),

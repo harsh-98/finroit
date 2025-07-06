@@ -38,9 +38,48 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Read a.json and return that data at market name
+func readJSONFile(filename string) (map[string]interface{}, error) {
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var data map[string]interface{}
+	if err := json.NewDecoder(file).Decode(&data); err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+var marketdata []byte
+
+func getMarketData() ([]byte, error) {
+	if len(marketdata) > 0 {
+		return marketdata, nil
+	}
+	data, err := os.ReadFile("a.json")
+	if err == nil {
+		marketdata = data
+	}
+	return nil, err
+}
+func marketHandler(w http.ResponseWriter, r *http.Request) {
+	data, err := getMarketData()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusNotFound)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(data)
+}
 func main() {
 	port := os.Getenv("PORT") // Set environment variable
 	http.HandleFunc("/user/info", infoHandler)
+	http.HandleFunc("/market/extra", marketHandler)
 
 	log.Println("Server running on", port)
 	log.Fatal(http.ListenAndServe(port, nil))

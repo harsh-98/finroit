@@ -15,3 +15,16 @@ class NavBarIndex extends _$NavBarIndex {
     state = NavBarIndex(index: i);
   }
 }
+
+@riverpod
+class CategoryIndex extends _$CategoryIndex {
+  int index = 0;
+  CategoryIndex({this.index = 0});
+  
+  @override
+  CategoryIndex build() => CategoryIndex();
+
+  setIndex(int i) {
+    state = CategoryIndex(index: i);
+  }
+}

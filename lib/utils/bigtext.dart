@@ -13,32 +13,51 @@ Widget bigText(String text, Color color) {
 }
 
 class _style {
-  final TextStyle big;
-  final TextStyle mid;
-  final TextStyle small;
+  late TextStyle bigger;
+  late TextStyle big;
+  late TextStyle mid;
+  late TextStyle midLessWhite;
+  late TextStyle small;
+  late TextStyle smaller;
   _style({
+    required this.bigger,
     required this.big,
     required this.mid,
+    required this.midLessWhite,
     required this.small,
+    required this.smaller,
   });
 }
 
-_style textstyle = _style(big: 
-  GoogleFonts.poppins(
+_style textstyle = _style(
+  bigger: GoogleFonts.poppins(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  ),
+  big: GoogleFonts.poppins(
     fontSize: 20,
     fontWeight: FontWeight.w700,
     color: Colors.white,
   ),
-  mid:
-  GoogleFonts.poppins(
+  mid: GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w700,
     color: Colors.white,
   ),
-  small:
-  GoogleFonts.poppins(
+  midLessWhite: GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Color(0xFF9CA3AF),
+  ),
+  small: GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     color: Color(0xFF9CA3AF),
+  ),
+  smaller: GoogleFonts.poppins(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    color: Colors.white.withOpacity(0.6),
   ),
 );

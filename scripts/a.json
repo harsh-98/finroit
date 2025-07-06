@@ -1,0 +1,254 @@
+{
+    "ENA": {
+        "name": "Ethena",
+        "image": "ethena.png"
+    },
+    "PENDLE": {
+        "name": "Pendle",
+        "image": "Pendle_Logo_Normal-03.png"
+    },
+    "MOODENG": {
+        "name": "Moo Deng",
+        "image": "MOODENG.jpg"
+    },
+    "EUR": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "INIT": {
+        "name": "Inite",
+        "image": "init_200x200.png"
+    },
+    "SUI": {
+        "name": "Sui",
+        "image": "sui-ocean-square.png"
+    },
+    "WIF": {
+        "name": "dogwifhat",
+        "image": "dogwifhat.jpg"
+    },
+    "GOAT": {
+        "name": "Goat",
+        "image": "Goat_Coin_-_Small_200x200.png"
+    },
+    "AVAX": {
+        "name": "Avalanche",
+        "image": "Avalanche_Circle_RedWhite_Trans.png"
+    },
+    "HYPE": {
+        "name": "Hyperliquid",
+        "image": "hyperliquid.jpg"
+    },
+    "XBR": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "XRP": {
+        "name": "XRP",
+        "image": "xrp-symbol-white-128.png"
+    },
+    "1000SHIB": {
+        "name": "1000SHIB",
+        "image": "SHIB.jpg"
+    },
+    "BNB": {
+        "name": "BNB",
+        "image": "bnb-icon2_2x.png"
+    },
+    "LTC": {
+        "name": "Litecoin",
+        "image": "litecoin.png"
+    },
+    "KAITO": {
+        "name": "KAITO",
+        "image": "Qm4DW488_400x400.jpg"
+    },
+    "LDO": {
+        "name": "Lido DAO",
+        "image": "Lido_DAO.png"
+    },
+    "DOGE": {
+        "name": "Binance-Peg Dogecoin",
+        "image": "dogecoin.png"
+    },
+    "1000BONK": {
+        "name": "1000BONK",
+        "image": "bonk_%281%29.png"
+    },
+    "MELANIA": {
+        "name": "Melania Meme",
+        "image": "melania-meme.png"
+    },
+    "ETC": {
+        "name": "Ethereum Classic",
+        "image": "ethereum-classic-logo.png"
+    },
+    "USDJPY": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "SPX500m": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "AAVE": {
+        "name": "Aave",
+        "image": "aave-token-round.png"
+    },
+    "SEI": {
+        "name": "Sei",
+        "image": "Sei_Logo_-_Transparent.png"
+    },
+    "POPCAT": {
+        "name": "Popcat",
+        "image": "image.jpg"
+    },
+    "VIRTUAL": {
+        "name": "Virtuals Protocol",
+        "image": "LOGOMARK.png"
+    },
+    "SOL": {
+        "name": "Solana",
+        "image": "solana.png"
+    },
+    "OP": {
+        "name": "Optimism",
+        "image": "Optimism.png"
+    },
+    "BTC": {
+        "name": "Bitcoin",
+        "image": "bitcoin.png"
+    },
+    "ATOM": {
+        "name": "Cosmos Hub",
+        "image": "cosmos_hub.png"
+    },
+    "RESOLV": {
+        "name": "Resolv",
+        "image": "resolv_token.png"
+    },
+    "WAL": {
+        "name": "Walrus",
+        "image": "WAL_logo.png"
+    },
+    "ADA": {
+        "name": "Cardano",
+        "image": "cardano.png"
+    },
+    "STRK": {
+        "name": "Starknet",
+        "image": "starknet.png"
+    },
+    "LINK": {
+        "name": "Chainlink",
+        "image": "chainlink-new-logo.png"
+    },
+    "TIA": {
+        "name": "Celestia",
+        "image": "tia.jpg"
+    },
+    "FTM": {
+        "name": "Fantom",
+        "image": "Fantom_round.png"
+    },
+    "FIL": {
+        "name": "Filecoin",
+        "image": "filecoin.png"
+    },
+    "S": {
+        "name": "Sonic",
+        "image": "200x200_Sonic_Logo.png"
+    },
+    "IP": {
+        "name": "Story",
+        "image": "Transparent_bg.png"
+    },
+    "UNI": {
+        "name": "Uniswap",
+        "image": "uniswap-logo.png"
+    },
+    "ARB": {
+        "name": "Arbitrum",
+        "image": "arb.jpg"
+    },
+    "TRX": {
+        "name": "TRON",
+        "image": "tron-logo.png"
+    },
+    "MATIC": {
+        "name": "Polygon",
+        "image": "polygon.png"
+    },
+    "ONDO": {
+        "name": "Ondo",
+        "image": "ONDO.png"
+    },
+    "MKR": {
+        "name": "Maker",
+        "image": "Mark_Maker.png"
+    },
+    "TECH100m": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "ETH": {
+        "name": "Ethereum",
+        "image": "ethereum.png"
+    },
+    "PENGU": {
+        "name": "Pudgy Penguins",
+        "image": "PUDGY_PENGUINS_PENGU_PFP.png"
+    },
+    "JUP": {
+        "name": "Jupiter",
+        "image": "jup.png"
+    },
+    "WLD": {
+        "name": "Worldcoin",
+        "image": "worldcoin.jpeg"
+    },
+    "FARTCOIN": {
+        "name": "Fartcoin",
+        "image": "fart.jpg"
+    },
+    "NEAR": {
+        "name": "NEAR Protocol",
+        "image": "near.jpg"
+    },
+    "DOT": {
+        "name": "Polkadot",
+        "image": "polkadot.png"
+    },
+    "1000PEPE": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "GRASS": {
+        "name": "Grass",
+        "image": "Grass.jpg"
+    },
+    "XAU": {
+        "name": "Not available",
+        "image": "Not available"
+    },
+    "TON": {
+        "name": "Toncoin",
+        "image": "photo_2024-09-10_17.09.00.jpeg"
+    },
+    "BERA": {
+        "name": "Berachain",
+        "image": "BERA.png"
+    },
+    "TRUMP": {
+        "name": "Official Trump",
+        "image": "trump.png"
+    },
+    "BCH": {
+        "name": "Bitcoin Cash",
+        "image": "bitcoin-cash-circle.png"
+    },
+    "TAO": {
+        "name": "Bittensor",
+        "image": "ARUsPeNQ_400x400.jpeg"
+    }
+}
