@@ -8,25 +8,6 @@ class Banner extends StatefulWidget {
   State<Banner> createState() => _AppState();
 }
 
-// class Loading extends StatelessWidget {
-//   const Loading({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: const [
-//             CircularProgressIndicator(),
-//             SizedBox(height: 20),
-//             Text('Loading...'),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class _AppState extends State<Banner> with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
@@ -55,6 +36,11 @@ class _AppState extends State<Banner> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller.forward();
+    Future.delayed(const Duration(seconds: 2)).then((value) => {
+    if (mounted) {
+      Navigator.pushReplacementNamed(context, '/home'),
+    }
+    });
   }
 
   @override
@@ -66,12 +52,6 @@ class _AppState extends State<Banner> with SingleTickerProviderStateMixin {
   // setState
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(const Duration(seconds: 2)).then((value) => {
-    // if (mounted) {
-    //   Navigator.pushReplacementNamed(context, '/trade'),
-    // }
-    // });
-    // appState.start = false;
     return Scaffold(
       // backgroundColor: Colors.deepPurple[0],
       body:
@@ -85,9 +65,12 @@ class _AppState extends State<Banner> with SingleTickerProviderStateMixin {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color.fromARGB(0xff, 0x3A, 0x4A, 0xEA),
-                  Color.fromARGB(0xff, 0x8B, 0x8A, 0xF5),
-                  Color.fromARGB(0xff, 0x3A, 0x4A, 0xEA),
+                  Color(0xFF0F172A),
+                  Color(0xFF6366F1),
+                  Color(0xFF0F172A),
+                  // Color.fromARGB(0xff, 0x3A, 0x4A, 0xEA),
+                  // Color.fromARGB(0xff, 0x8B, 0x8A, 0xF5),
+                  // Color.fromARGB(0xff, 0x3A, 0x4A, 0xEA),
                 ],
               ),
             ),

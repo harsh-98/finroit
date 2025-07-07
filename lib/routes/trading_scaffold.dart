@@ -2,14 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namer_app/components/category_tab.dart';
-import 'package:namer_app/components/deck.dart';
-import 'package:namer_app/components/header.dart';
-import 'package:namer_app/components/trade.dart';
-import 'package:namer_app/components/trade_card.dart';
-import 'package:namer_app/redux/nav_bar_index.dart';
-import 'package:namer_app/redux/user.dart';
-import 'package:namer_app/utils/bigtext.dart';
+import 'package:finroit/components/category_tab.dart';
+import 'package:finroit/components/deck.dart';
+import 'package:finroit/components/header.dart';
+import 'package:finroit/components/trade.dart';
+import 'package:finroit/components/trade_card.dart';
+import 'package:finroit/redux/nav_bar_index.dart';
+import 'package:finroit/redux/user.dart';
+import 'package:finroit/utils/bigtext.dart';
 import '../redux/market.dart';
 import '../components/nav_bar.dart';
 
@@ -24,8 +24,8 @@ class _TradingScaffoldState extends ConsumerState<TradingScaffold> {
   @override
   void initState() {
     super.initState();
-    // ref.read(userStateProvider.notifier).update();
-    // ref.read(marketsProvider.notifier).update();
+    ref.read(userStateProvider.notifier).update();
+    ref.read(marketsProvider.notifier).update();
   }
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/utils/bigtext.dart';
+import 'package:finroit/utils/bigtext.dart';
 
 Widget buildTradeButtons() {
   return Row(

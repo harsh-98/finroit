@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namer_app/components/leaderboard_user_item.dart';
-import 'package:namer_app/components/level_indicator.dart';
-import 'package:namer_app/components/achievement_badge.dart';
+import 'package:finroit/components/leaderboard_user_item.dart';
+import 'package:finroit/components/level_indicator.dart';
+import 'package:finroit/components/achievement_badge.dart';
 import '../utils/bigtext.dart' ;
 
 class LeaderboardPage extends StatefulWidget {

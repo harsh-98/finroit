@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namer_app/components/trade.dart';
-import 'package:namer_app/util.dart';
+import 'package:finroit/components/trade.dart';
+import 'package:finroit/util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../utils/bigtext.dart';
 import 'painter.dart';

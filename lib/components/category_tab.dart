@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:namer_app/redux/market.dart';
-import 'package:namer_app/redux/nav_bar_index.dart';
-import 'package:namer_app/utils/bigtext.dart';
+import 'package:finroit/redux/market.dart';
+import 'package:finroit/redux/nav_bar_index.dart';
+import 'package:finroit/utils/bigtext.dart';
 import 'dart:developer' as dev;
 
 class CategoryTab extends StatelessWidget {

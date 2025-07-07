@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namer_app/redux/user.dart';
+import 'package:finroit/redux/user.dart';
 import '../utils/bigtext.dart';
 import 'dart:developer';
 import '../redux/market.dart';

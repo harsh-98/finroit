@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/redux/const.dart';
+import 'package:finroit/redux/const.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/components/nav_bar.dart';
+import 'package:finroit/components/nav_bar.dart';
 
 class TradeAsset extends StatefulWidget {
   const TradeAsset({super.key});

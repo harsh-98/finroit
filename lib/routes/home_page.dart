@@ -2,10 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namer_app/routes/trading_scaffold.dart';
-import 'package:namer_app/redux/nav_bar_index.dart';
-import 'package:namer_app/routes/trade_asset.dart';
-import 'package:namer_app/routes/leaderboard_page.dart';
+import 'package:finroit/routes/trading_scaffold.dart';
+import 'package:finroit/redux/nav_bar_index.dart';
+import 'package:finroit/routes/trade_asset.dart';
+import 'package:finroit/routes/leaderboard_page.dart';
+import 'package:finroit/routes/user_profile_page.dart';
 import '../components/nav_bar.dart';
 import '../components/card_deck.dart';
 
@@ -55,7 +56,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
           ],
         ),
-        Center(child: CardDeck())
+        UserProfilePage()
       ];
 
   @override

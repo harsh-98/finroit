@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namer_app/components/trade_card.dart';
-import 'package:namer_app/redux/market.dart';
-import 'package:namer_app/redux/nav_bar_index.dart';
+import 'package:finroit/components/trade_card.dart';
+import 'package:finroit/redux/market.dart';
+import 'package:finroit/redux/nav_bar_index.dart';
 
 class Deck extends StatefulWidget {
   @override

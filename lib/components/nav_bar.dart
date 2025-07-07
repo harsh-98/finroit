@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:namer_app/redux/nav_bar_index.dart';
+import 'package:finroit/redux/nav_bar_index.dart';
 
 class NavBar extends ConsumerWidget {
   NavBar({super.key });

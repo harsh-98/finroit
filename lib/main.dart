@@ -1,10 +1,10 @@
 // import 'package:english_words/english_words.dart';
 // import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:namer_app/components/card_deck.dart';
-import 'package:namer_app/components/nav_bar.dart';
-import 'package:namer_app/routes/home_page.dart';
-import 'package:namer_app/routes/leaderboard_page.dart';
+import 'package:finroit/components/card_deck.dart';
+import 'package:finroit/components/nav_bar.dart';
+import 'package:finroit/routes/home_page.dart';
+import 'package:finroit/routes/leaderboard_page.dart';
 import 'package:riverpod/riverpod.dart';
 // import 'package:flutter/rendering.dart';
 import 'dart:developer';
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'FinRoit',
         // home: HomePage(),
-        initialRoute: '/home',
+        initialRoute: '/',
         routes: {
           '/': (context) => const Banner.Banner(),
           // '/trade': (context) => const TradeAsset(),
